@@ -17,10 +17,12 @@ end
 ;   Constants
     const WHITE = $0E
     const YELLOW = $1E
-    COLUPF = YELLOW
+
+
 ;   Main loop
 mainloop
     drawscreen
+    COLUPF = YELLOW
 
     goto mainloop
 
