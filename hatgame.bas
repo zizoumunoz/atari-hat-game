@@ -57,13 +57,27 @@ end
     player0y = SCREEN_HEIGHT - 114
 
 ;   Initialize background
-    COLUBK = $AE
+    COLUBK = LIGHT_BLUE
+
+;   Initialize missile1
+    
+    missile1x = 50
+    missile1y = 50
 
 ;   Handle player0 movement
 __p0movement
     if joy0right then player0x = player0x + 1
     if joy0left then player0x = player0x - 1
     goto mainloop
+
+;   Missile status vars
+
+;   Missile (Furniture) Generation
+;   Using missile1 to have diff colors from player0
+__randmissile1pos
+    missile1x = rand & SCREEN_WIDTH
+    goto mainloop
+
 
 ;   Main loop
 mainloop
@@ -81,7 +95,10 @@ mainloop
     GRAY
 end
     drawscreen
+    COLUP1 = YELLOW
     COLUP0 = WHITE      ;   Set player colors
+
+    if joy0left then goto __randmissile1pos
 
     goto __p0movement
 
