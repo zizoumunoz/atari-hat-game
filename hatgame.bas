@@ -1,7 +1,7 @@
 ;   Author: Zinadine M. L.
 ;   Game about catching belongings and furniture to help a lady move.
 ;   Pending name: MOVERS INC.
-
+    set tv ntsc
     set kernel_options pfcolors playercolors player1colors
 
       playfield:
@@ -15,27 +15,27 @@
     ..XXXXXXXXXXXXXXXXXXX.....XXXXXX
     ..XX...X...X...X...XX.....XXXXXX
     ..XX...X...X...X...XX....XXXXXXX
-    ..XX...XXXXXXXXXXXXXX.......XX..
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 end 
 
 ;   Player Sprites
     player0:
-    %00110110
-    %00100100
-    %00100100
-    %00100100
-    %00111100
-    %00011000
-    %01011010
-    %01011010
-    %01011010
-    %00111100
-    %00111100
-    %00000000
-    %00011000
-    %00011000
-    %00000000
-    %00000000
+    %0111100
+    %0101000
+    %0101000
+    %0101000
+    %0101000
+    %0101000
+    %0101000
+    %0111000
+    %1111111
+    %1111100
+    %1111100
+    %0010000
+    %0111000
+    %0111000
+    %0111110
+    %0111000
 end
 
     player1:
@@ -54,18 +54,19 @@ end
     const RED = $34
     const GRAY_LIGHT = $08
     const GRAY = $04
+    const GREEN = $C4
     const BLUE_LIGHT = $AE
-    const BLUE = $7A
-    const BLUE_DARK = $78
-    const TAN = $EC
-    const TAN_DARK = EA 
+    const BLUE = $8A
+    const BLUE_DARK = $88
+    const TAN = $FC
+    const TAN_DARK = $FA 
 ;   Constants - Screen Res
     const SCREEN_HEIGHT = 192
     const SCREEN_WIDTH = 160
 
 ;   Initializing players
     player0x = SCREEN_WIDTH / 4 - 4
-    player0y = SCREEN_HEIGHT - 104
+    player0y = SCREEN_HEIGHT - 105
 
 ;   Initialize background
     COLUBK = BLUE_LIGHT
@@ -81,30 +82,16 @@ end
 ;   Handle player0 movement
 __p0movement
     if joy0right then player0x = player0x + 1 : _Frame_Counter = _Frame_Counter + 1
-    if _Frame_Counter = 4 then _Frame_Counter = 0
-    if _Frame_Counter = 0 ||_Frame_Counter = 1 then __p0frame0
-    if _Frame_Counter = 2 || _Frame_Counter = 3 then __p0frame1
-    if !joy0right then player0:
-    %00110110
-    %00100100
-    %00100100
-    %00100100
-    %00111100
-    %00011000
-    %01011010
-    %01011010
-    %01011010
-    %00111100
-    %00111100
-    %00000000
-    %00011000
-    %00011000
-    %00000000
-    %00000000
-end
+    if joy0left then player0x = player0x - 1 : REFP0 = 8 : _Frame_Counter = _Frame_Counter + 1
+    if _Frame_Counter = 50 then _Frame_Counter = 0
+    if _Frame_Counter > 0 && _Frame_Counter < 20 then __p0walkframe0
+    if _Frame_Counter > 20 && _Frame_Counter < 50  then __p0walkframe1
+    _Frame_Counter = 0
+    if _Frame_Counter = 0 then __p0idleframe
+    
 
 
-    if joy0left then player0x = player0x - 1
+
     goto mainloop
 
 ;   Missile status vars
@@ -116,46 +103,67 @@ __randmissile1pos
     goto mainloop
 
 ;   Animation Frames
-__p0frame0
+__p0walkframe0
     player0:
-    %00000110
-    %00110100
-    %00100100
-    %00100100
-    %00111100
-    %00011000
-    %01011010
-    %01011010
-    %01011010
-    %00111100
-    %00111100
-    %00000000
-    %00011000
-    %00011000
-    %00000000
-    %00000000
+    %0110000
+    %0101100
+    %0101000
+    %0101000
+    %0101000
+    %0101000
+    %0101000
+    %0111000
+    %1111111
+    %1111100
+    %1111100
+    %0010000
+    %0111000
+    %0111000
+    %0111110
+    %0111000
 end
     goto mainloop
-__p0frame1
+__p0walkframe1
     player0:
-    %00110000
-    %00100110
-    %00100100
-    %00100100
-    %00111100
-    %00011000
-    %01011010
-    %01011010
-    %01011010
-    %00111100
-    %00111100
-    %00000000
-    %00011000
-    %00011000
-    %00000000
-    %00000000
+    %0001100
+    %0111000
+    %0101000
+    %0101000
+    %0101000
+    %0101000
+    %0101000
+    %0111000
+    %1111111
+    %1111100
+    %1111100
+    %0010000
+    %0111000
+    %0111000
+    %0111110
+    %0111000
 end
     goto mainloop
+__p0idleframe
+    player0:
+    %0111100
+    %0101000
+    %0101000
+    %0101000
+    %0101000
+    %0101000
+    %0101000
+    %0111000
+    %1111111
+    %1111100
+    %1111100
+    %0010000
+    %0111000
+    %0111000
+    %0111110
+    %0111000
+end
+    goto mainloop
+
 
 ;   ========================
 ;   ====    MAIN LOOP   ====
@@ -173,7 +181,7 @@ mainloop
     GRAY_LIGHT
     GRAY_LIGHT
     GRAY
-    GRAY
+    GREEN
 end
     player1color:
     BLUE
@@ -183,15 +191,24 @@ end
     BLUE_LIGHT
 end
     player0color:
-    BLUE_LIGHT
+    BLUE_DARK
+    BLUE_DARK
+    BLUE_DARK
     BLUE
     BLUE
     BLUE
     BLUE
+    BLUE_DARK
+    TAN_DARK
+    BLUE_DARK
+    BLUE_DARK
     TAN
     TAN
-    BLUE_LIGHT
+    TAN_DARK
+    BLUE_DARK
+    BLUE
 end
+
     drawscreen
     COLUP1 = YELLOW     ;   Set colors for furniture
     COLUP0 = WHITE      ;   Set player colors
