@@ -54,15 +54,18 @@ end
     const RED = $34
     const GRAY_LIGHT = $08
     const GRAY = $04
-    const GREEN = $C4
+    const GREEN = $CC
     const BLUE_LIGHT = $AE
     const BLUE = $8A
     const BLUE_DARK = $88
     const TAN = $FC
     const TAN_DARK = $FA 
+    const BROWN = $18
+    const BROWN_DARK = $16 
 ;   Constants - Screen Res
     const SCREEN_HEIGHT = 192
     const SCREEN_WIDTH = 160
+;   Consant - Furniture Type
 
 ;   Initializing players
     player0x = SCREEN_WIDTH / 4 - 4
@@ -102,13 +105,11 @@ __randmissile1pos
     missile1x = rand - 60
     goto mainloop
 
-;   Animation Frames
+;   Animation Frames    -----------------------------------------------
 __p0walkframe0
     player0:
     %0110000
     %0101100
-    %0101000
-    %0101000
     %0101000
     %0101000
     %0101000
@@ -130,8 +131,6 @@ __p0walkframe1
     %0101000
     %0101000
     %0101000
-    %0101000
-    %0101000
     %0111000
     %1111111
     %1111100
@@ -150,8 +149,6 @@ __p0idleframe
     %0101000
     %0101000
     %0101000
-    %0101000
-    %0101000
     %0111000
     %1111111
     %1111100
@@ -163,6 +160,24 @@ __p0idleframe
     %0111000
 end
     goto mainloop
+
+;   Furniture 
+__boxSprite
+    player1color:
+    BROWN_DARK
+    BROWN_DARK
+    BROWN
+    BROWN
+    BROWN
+end
+    goto mainloop
+    player1:
+    %111111
+    %110011
+    %111111
+    %111111
+    %111111
+end
 
 
 ;   ========================
@@ -196,8 +211,6 @@ end
     BLUE_DARK
     BLUE
     BLUE
-    BLUE
-    BLUE
     BLUE_DARK
     TAN_DARK
     BLUE_DARK
@@ -212,6 +225,7 @@ end
     drawscreen
     COLUP1 = YELLOW     ;   Set colors for furniture
     COLUP0 = WHITE      ;   Set player colors
+    
     goto __p0movement
     goto mainloop
 
