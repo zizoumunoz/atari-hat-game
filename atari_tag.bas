@@ -1,7 +1,6 @@
 ; TO-DO HIDING IN WALLS
 
 ; TAG for the Atari 2600
-
     set tv ntsc
     set kernel_options no_blank_lines
     CTRLPF = $23
@@ -63,14 +62,14 @@ end
     dim _p1animCounter = b
 
     c = 0
-    dim _new0x = c
+    dim _old0x = c
     d = 0
-    dim _new0y = d
+    dim _old0y = d
     e = 0
-    dim _new1x = e
+    dim _old1x = e
     f = 0
-    dim _new1y = f
-     
+    dim _old1y = f
+
     
     scorecolor = WHITE
     
@@ -89,27 +88,33 @@ __main
     drawscreen 
 
     goto __p0movement
+    goto __p0collision
     goto __p1movement
     goto __main
 
 __p0movement
-    ; === Colision ===
+    _old0x = player0x
+    _old0y = player0y
 
-    _new0x = player0x
-    _new0y = player0y
-    
     if joy0right then player0x = player0x + 1 : REFP0 = 8 : _p0animCounter = _p0animCounter + 1
+
     if joy0left then player0x = player0x - 1 : _p0animCounter = _p0animCounter + 1
+
     if joy0up then player0y = player0y - 1 : _p0animCounter = _p0animCounter + 1
+
     if joy0down then player0y = player0y + 1 : _p0animCounter = _p0animCounter + 1
+
     if _p0animCounter = 1 then goto __p0walkframe0
     if _p0animCounter = 5 then goto __p0walkframe1
     if _p0animCounter > 10 then _p0animCounter = 0
 
+__p0collision
+    ; === Colision ===
+    if collision(player0, playfield) then player0x = _old0x : player0y = _old0y
+    goto __main
+
 
 __p1movement
-
-
 
     if joy1right then player1x = player1x + 1  : _p1animCounter = _p1animCounter + 1
 
@@ -118,8 +123,6 @@ __p1movement
     if joy1up then player1y = player1y - 1 : _p1animCounter = _p1animCounter + 1
 
     if joy1down then player1y = player1y + 1 : _p1animCounter = _p1animCounter + 1
-
-    if pfread()
 
     if _p1animCounter = 1 then goto __p1walkframe0
     if _p1animCounter = 5 then goto __p1walkframe1
