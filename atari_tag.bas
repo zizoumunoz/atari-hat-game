@@ -62,7 +62,7 @@ end
     dim _p1animCounter = b
 
     c = 0
-    dim _old0x = c
+    dim _new0x = c
     d = 0
     dim _old0y = d
     e = 0
@@ -85,20 +85,20 @@ __main
     
     PF0 = %11110000
     score = score + 1
-    drawscreen 
-
+    
+    drawscreen
     goto __p0movement
-    goto __p0collision
     goto __p1movement
     goto __main
 
 __p0movement
-    _old0x = player0x
-    _old0y = player0y
-
+    
+    ; Movement, then collision checking
     if joy0right then player0x = player0x + 1 : REFP0 = 8 : _p0animCounter = _p0animCounter + 1
+    if collision(player0, playfield) then player0x = player0x - 1
 
     if joy0left then player0x = player0x - 1 : _p0animCounter = _p0animCounter + 1
+    if collision(player0, playfield) then player0x = player0x + 1    
 
     if joy0up then player0y = player0y - 1 : _p0animCounter = _p0animCounter + 1
 
@@ -107,12 +107,6 @@ __p0movement
     if _p0animCounter = 1 then goto __p0walkframe0
     if _p0animCounter = 5 then goto __p0walkframe1
     if _p0animCounter > 10 then _p0animCounter = 0
-
-__p0collision
-    ; === Colision ===
-    if collision(player0, playfield) then player0x = _old0x : player0y = _old0y
-    goto __main
-
 
 __p1movement
 
