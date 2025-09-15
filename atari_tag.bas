@@ -63,13 +63,13 @@ end
     dim _p1animCounter = b
 
     c = 0
-    dim _oldplayer0x = c
+    dim _new0x = c
     d = 0
-    dim _oldplayer0y = d
+    dim _new0y = d
     e = 0
-    dim _oldplayer1x = e
+    dim _new1x = e
     f = 0
-    dim _oldplayer1y = f
+    dim _new1y = f
      
     
     scorecolor = WHITE
@@ -95,8 +95,9 @@ __main
 __p0movement
     ; === Colision ===
 
-    _oldplayer0x = player0x
-    _oldplayer0y = player0y
+    _new0x = player0x
+    _new0y = player0y
+    
     if joy0right then player0x = player0x + 1 : REFP0 = 8 : _p0animCounter = _p0animCounter + 1
     if joy0left then player0x = player0x - 1 : _p0animCounter = _p0animCounter + 1
     if joy0up then player0y = player0y - 1 : _p0animCounter = _p0animCounter + 1
@@ -107,6 +108,9 @@ __p0movement
 
 
 __p1movement
+
+
+
     if joy1right then player1x = player1x + 1  : _p1animCounter = _p1animCounter + 1
 
     if joy1left then player1x = player1x - 1: REFP1 = 8 : _p1animCounter = _p1animCounter + 1
@@ -114,7 +118,9 @@ __p1movement
     if joy1up then player1y = player1y - 1 : _p1animCounter = _p1animCounter + 1
 
     if joy1down then player1y = player1y + 1 : _p1animCounter = _p1animCounter + 1
-    
+
+    if pfread()
+
     if _p1animCounter = 1 then goto __p1walkframe0
     if _p1animCounter = 5 then goto __p1walkframe1
     if _p1animCounter > 10 then _p1animCounter = 0
