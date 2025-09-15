@@ -42,7 +42,11 @@ end
     const GREEN = $BE
     const YELLOW = $1E
 
-; ======== PLAYER DATA INITIALIZES ========
+; ======== VARIABLE DECLARATIONS ========
+    dim _old0x = a
+    dim _old0y = b
+
+; ======== PLAYER DATA INITIALIZERS ========
 
     player0x = 120
     player0y = 39
@@ -51,6 +55,15 @@ end
 ;                  SUB-ROUTINES
 ; ================================================
 
+__handleInput
+    rem -- Storing old positions for later
+    _old0x = player0x
+    _old0y = player0y
+
+    rem -- player0 movement
+    if joy0right then player0x = player0x + 1 : REFP0 = 8
+
+return
 
 
 ; ================================================
@@ -61,6 +74,8 @@ __main
     COLUP0 = PURPLE
     COLUP1 = GREEN
     COLUPF = YELLOW
+
+    gosub __handleInput
 
     drawscreen
     goto __main
