@@ -108,9 +108,13 @@ __p0movement
 
 __p1movement
     if joy1right then player1x = player1x + 1  : _p1animCounter = _p1animCounter + 1
+
     if joy1left then player1x = player1x - 1: REFP1 = 8 : _p1animCounter = _p1animCounter + 1
+
     if joy1up then player1y = player1y - 1 : _p1animCounter = _p1animCounter + 1
+
     if joy1down then player1y = player1y + 1 : _p1animCounter = _p1animCounter + 1
+    
     if _p1animCounter = 1 then goto __p1walkframe0
     if _p1animCounter = 5 then goto __p1walkframe1
     if _p1animCounter > 10 then _p1animCounter = 0
