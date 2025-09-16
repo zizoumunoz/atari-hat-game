@@ -36,6 +36,16 @@ end
     %01010000
 end
 
+    player1:
+    %00100010
+    %00101010
+    %00111110
+    %01111111
+    %10000111
+    %10000101
+    %10000000
+end
+
 ; ======== CONSTANTS : COLORS ========
     const WHITE = $0F
     const PURPLE = $6A
@@ -52,6 +62,9 @@ end
 
     player0x = 120
     player0y = 39
+
+    player1x = 30
+    player1y = 60
 
 ; ================================================
 ;                  SUB-ROUTINES
