@@ -21,7 +21,7 @@
     .......XXXXXX.....XX..X..XX..X..
     ..X....X.......X......X......X..
     ..XXXXXX.XXXXXXXXXXXXXXXXXXXXX..
-    ................................ 
+    ................................
 end
 
 ; ======== PLAYER SPRITES ========
@@ -99,7 +99,7 @@ __handleInput
     if joy0down then player0y = player0y + 1
 
     rem -- player1 movement
-    if joy1right then player1x = player1x + 1 
+    if joy1right then player1x = player1x + 1
     if joy1left then player1x = player1x - 1 : REFP1 = 8
     if joy1up then player1y = player1y - 1
     if joy1down then player1y = player1y + 1
