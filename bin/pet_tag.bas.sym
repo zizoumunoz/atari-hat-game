@@ -3,6 +3,9 @@
 0.__handleInput          f4d1              (R )
 0.__main                 f4b8              (R )
 0.condpart0              f4de                  
+0.condpart1              f4e9                  
+0.condpart2              f4f2                  
+0.condpart3              f4fb                  
 0.continuelastP0         f169              (R )
 0.continuelastP1         f13d              (R )
 0.continueP0             f0d6              (R )
@@ -31,7 +34,10 @@
 0.L025                   f4d9                  
 0.L026                   f4d9                  
 0.L027                   f4e4                  
+0.L028                   f4eb                  
+0.L029                   f4f4                  
 0.L03                    f463                  
+0.L030                   f4fd                  
 0.L04                    f49c                  
 0.L05                    f4a8                  
 0.L06                    f4a8                  
@@ -43,6 +49,9 @@
 0.skipDrawP0             f083              (R )
 0.skipDrawP1             f089              (R )
 0.skipL026               f4e4              (R )
+0.skipL027               f4eb              (R )
+0.skipL028               f4f4              (R )
+0.skipL029               f4fd              (R )
 0.startkernel            f0a8              (R )
 1.CYCLES                 0000              (R )
 18.CYCLES                0000              (R )
@@ -71,8 +80,8 @@ aux3                     00f2
 aux4                     00f3                  
 aux5                     00f4                  
 aux6                     00f5                  
-B                        00d5                  
 b                        00d5              (R )
+B                        00d5                  
 backgroundchange         0000 ????         (R )
 ballheight               0092              (R )
 ballx                    0084                  
@@ -100,8 +109,8 @@ CXM1P                    0001
 CXP0FB                   0002                  
 CXP1FB                   0003                  
 CXPPMM                   0007                  
-d                        00d7                  
 D                        00d7                  
+d                        00d7                  
 debugcycles              0000 ????         (R )
 debugscore               0000 ????         (R )
 DivideLoop               f3e3              (R )
@@ -109,26 +118,26 @@ doneoverscan             f3c4
 down2                    f38f              (R )
 DPC_kernel_options       0000 ????         (R )
 drawscreen               f3bf              (R )
-E                        00d8                  
 e                        00d8                  
+E                        00d8                  
 ECHOFIRST                0001                  
 ENABL                    001f              (R )
 ENAM0                    001d              (R )
 ENAM1                    001e              (R )
 endkernel                f17a              (R )
 enterlastkernel          f12b                  
-f                        00d9                  
 F                        00d9                  
+f                        00d9                  
 font                     0000 ????         (R )
-G                        00da                  
 g                        00da                  
+G                        00da                  
 game                     f45f              (R )
 goback                   f0a6              (R )
 GREEN                    00be              (R )
 GRP0                     001b              (R )
 GRP1                     001c              (R )
-h                        00db                  
 H                        00db                  
+h                        00db                  
 handwritten              0003                  
 hex                      0008                  
 HMBL                     0024                  
@@ -139,8 +148,8 @@ HMOVE                    002a              (R )
 HMP0                     0020              (R )
 HMP1                     0021              (R )
 HorPosLoop               f3e0              (R )
-I                        00dc                  
 i                        00dc                  
+I                        00dc                  
 initscore                f021              (R )
 INPT0                    0008                  
 INPT1                    0009                  
@@ -151,10 +160,10 @@ INPT5                    000d
 interlaced               0000 ????         (R )
 interrupted              0004                  
 INTIM                    0284              (R )
-J                        00dd                  
 j                        00dd                  
-k                        00de                  
+J                        00dd                  
 K                        00de                  
+k                        00de                  
 keepgoing                f286              (R )
 keepgoingy               f2a2              (R )
 kernel                   f034              (R )
@@ -195,16 +204,16 @@ notright                 f320              (R )
 notup                    f36c              (R )
 NUSIZ0                   0004              (R )
 NUSIZ1                   0005              (R )
-o                        00e2                  
 O                        00e2                  
+o                        00e2                  
 objecty                  0085                  
 onedecup                 f328              (R )
 oneincup                 f371              (R )
 overscan                 f3bf                  
 overscan_time            0025              (R )
 overscanloop             f3bf              (R )
-p                        00e3                  
 P                        00e3                  
+p                        00e3                  
 paddle                   0091                  
 PF0                      000d              (R )
 PF1                      000e              (R )
@@ -257,7 +266,7 @@ player1pointerlo         008c
 player1x                 0081                  
 player1y                 0086              (R )
 playercolors             0000 ????         (R )
-playerL04_0              f4e5              (R )
+playerL04_0              f500              (R )
 playfield                00a4              (R )
 playfieldbase            00a4              (R )
 playfieldpos             00ef              (R )
@@ -330,8 +339,8 @@ tiny                     0007
 u                        00e8                  
 U                        00e8                  
 up2                      f344              (R )
-V                        00e9                  
 v                        00e9                  
+V                        00e9                  
 var0                     00a4                  
 var1                     00a5                  
 var10                    00ae                  
@@ -397,8 +406,8 @@ W                        00ea
 whimsey                  0006                  
 WHITE                    000f                  
 WSYNC                    0002              (R )
-X                        00eb                  
 x                        00eb                  
+X                        00eb                  
 Y                        00ec                  
 y                        00ec                  
 YELLOW                   001e              (R )

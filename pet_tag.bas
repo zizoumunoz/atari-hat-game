@@ -81,4 +81,7 @@ __handleInput
 
     rem -- player0 movement
     if joy0right then player0x = player0x + 1 : REFP0 = 8
+    if joy0left then player0x = player0x - 1
+    if joy0up then player0y = player0y - 1
+    if joy0down then player0y = player0y + 1
     return
