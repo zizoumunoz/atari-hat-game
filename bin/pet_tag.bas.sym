@@ -6,6 +6,10 @@
 0.condpart1              f4fd                  
 0.condpart2              f506                  
 0.condpart3              f50f                  
+0.condpart4              f518                  
+0.condpart5              f521                  
+0.condpart6              f52e                  
+0.condpart7              f537                  
 0.continuelastP0         f169              (R )
 0.continuelastP1         f13d              (R )
 0.continueP0             f0d6              (R )
@@ -41,6 +45,11 @@
 0.L031                   f4ff                  
 0.L032                   f508                  
 0.L033                   f511                  
+0.L034                   f511                  
+0.L035                   f51a                  
+0.L036                   f527                  
+0.L037                   f530                  
+0.L038                   f539                  
 0.L04                    f49c                  
 0.L05                    f4a8                  
 0.L06                    f4b4                  
@@ -55,6 +64,10 @@
 0.skipL030               f4ff              (R )
 0.skipL031               f508              (R )
 0.skipL032               f511              (R )
+0.skipL034               f51a              (R )
+0.skipL035               f527              (R )
+0.skipL036               f530              (R )
+0.skipL037               f539              (R )
 0.startkernel            f0a8              (R )
 1.CYCLES                 0000              (R )
 18.CYCLES                0000              (R )
@@ -66,8 +79,8 @@
 7.CYCLES                 0006              (R )
 _old0x                   00d4              (R )
 _old0y                   00d5              (R )
-a                        00d4              (R )
 A                        00d4                  
+a                        00d4              (R )
 alarmclock               0002                  
 altkernel                f0f1                  
 altkernel2               f0e5              (R )
@@ -129,8 +142,8 @@ ENAM0                    001d              (R )
 ENAM1                    001e              (R )
 endkernel                f17a              (R )
 enterlastkernel          f12b                  
-f                        00d9                  
 F                        00d9                  
+f                        00d9                  
 font                     0000 ????         (R )
 g                        00da                  
 G                        00da                  
@@ -139,8 +152,8 @@ goback                   f0a6              (R )
 GREEN                    00be              (R )
 GRP0                     001b              (R )
 GRP1                     001c              (R )
-h                        00db                  
 H                        00db                  
+h                        00db                  
 handwritten              0003                  
 hex                      0008                  
 HMBL                     0024                  
@@ -163,16 +176,16 @@ INPT5                    000d
 interlaced               0000 ????         (R )
 interrupted              0004                  
 INTIM                    0284              (R )
-J                        00dd                  
 j                        00dd                  
+J                        00dd                  
 k                        00de                  
 K                        00de                  
 keepgoing                f286              (R )
 keepgoingy               f2a2              (R )
 kernel                   f034              (R )
 kernelmacrodef           0000 ????         (R )
-L                        00df                  
 l                        00df                  
+L                        00df                  
 lastkernelline           f105              (R )
 leftloop                 f2f9              (R )
 legacy                   0000 ????         (R )
@@ -180,8 +193,8 @@ lifecolor                00f4
 lifepointer              00f2                  
 lives                    00f3                  
 loop2                    f205              (R )
-M                        00e0                  
 m                        00e0                  
+M                        00e0                  
 MachineIs2600            f011              (R )
 mincycles                0000 ????         (R )
 minikernel               0000 ????         (R )
@@ -192,8 +205,8 @@ missile1height           0087              (R )
 missile1x                0083                  
 missile1y                0088              (R )
 multisprite              0000 ????         (R )
-N                        00e1                  
 n                        00e1                  
+N                        00e1                  
 no_blank_lines           0001              (R )
 no_blank_lines_bailout   f178              (R )
 NO_ILLEGAL_OPCODES       0000 ????         (R )
@@ -215,8 +228,8 @@ oneincup                 f371              (R )
 overscan                 f3bf                  
 overscan_time            0025              (R )
 overscanloop             f3bf              (R )
-p                        00e3                  
 P                        00e3                  
+p                        00e3                  
 paddle                   0091                  
 PF0                      000d              (R )
 PF1                      000e              (R )
@@ -269,8 +282,8 @@ player1pointerlo         008c              (R )
 player1x                 0081              (R )
 player1y                 0086              (R )
 playercolors             0000 ????         (R )
-playerL04_0              f512              (R )
-playerL05_1              f519              (R )
+playerL04_0              f53a              (R )
+playerL05_1              f541              (R )
 playfield                00a4              (R )
 playfieldbase            00a4              (R )
 playfieldpos             00ef              (R )
@@ -279,8 +292,8 @@ PURPLE                   006a              (R )
 Q                        00e4                  
 q                        00e4                  
 qtcontroller             0000 ????         (R )
-R                        00e5                  
 r                        00e5                  
+R                        00e5                  
 rand                     00a2              (R )
 rand16                   0000 ????         (R )
 randomize                f3b5                  
@@ -299,8 +312,8 @@ retroputer               0005
 rightloop                f30f              (R )
 ROM2k                    0000 ????         (R )
 RSYNC                    0003                  
-s                        00e6                  
 S                        00e6                  
+s                        00e6                  
 score                    0093              (R )
 scorecolor               00a3              (R )
 scorefade                0000 ????         (R )
@@ -343,8 +356,8 @@ tiny                     0007
 U                        00e8                  
 u                        00e8                  
 up2                      f344              (R )
-v                        00e9                  
 V                        00e9                  
+v                        00e9                  
 var0                     00a4                  
 var1                     00a5                  
 var10                    00ae                  
@@ -412,8 +425,8 @@ WHITE                    000f
 WSYNC                    0002              (R )
 x                        00eb                  
 X                        00eb                  
-y                        00ec                  
 Y                        00ec                  
+y                        00ec                  
 YELLOW                   001e              (R )
 z                        00ed                  
 Z                        00ed                  
