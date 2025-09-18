@@ -96,11 +96,6 @@ end
     player1x = 30
     player1y = 60
 
-; ================================================
-;                  SUB-ROUTINES
-; ================================================
-
-
 
 ; ================================================
 ;                  MAIN LOOP
@@ -111,12 +106,16 @@ __main
     COLUPF = YELLOW
     PF0 = %11110000
 
+    gosub __updateAnimations
     gosub __handleInput
-
     drawscreen
 
     gosub __handleCollision
     goto __main
+
+; ================================================
+;                  SUB-ROUTINES
+; ================================================
 
 __handleInput
     rem -- Storing old positions for later
@@ -132,10 +131,13 @@ __handleInput
     _flags{1} = 0
 
     rem -- player0 movement
-    if joy0right then player0x = player0x + 1 : _flags{0} = 1 : _flags{2} = 0
-    if joy0left then player0x = player0x - 1 : _flags{0} = 1 : _flags{2} = 1
-    if joy0up then player0y = player0y - 1  : _flags{0} = 1 : _flags
-    if joy0down then player0y = player0y + 1 : _flags{0} = 1
+    if joy0right then player0x = player0x + 1 : _flags{0} = 1 : _flags{2} = 0 : _p0animCounter = _p0animCounter + 1
+    if joy0left then player0x = player0x - 1 : _flags{0} = 1 : _flags{2} = 1 : _p0animCounter = _p0animCounter + 1
+    if joy0up then player0y = player0y - 1  : _flags{0} = 1 : _flags : _p0animCounter = _p0animCounter + 1
+    if joy0down then player0y = player0y + 1 : _flags{0} = 1 : _p0animCounter = _p0animCounter + 1
+
+    rem -- Reset animation counter after 1 second/60 frames
+    if _p0animCounter = 120 then _p0animCounter = 0
 
     if joy1right then player1x = player1x + 1 : _flags{1} = 1 : _flags{3} = 0
     if joy1left then player1x = player1x - 1 : _flags{1} = 1 : _flags{3} = 1
@@ -148,8 +150,34 @@ __handleInput
     return
 
 __updateAnimations
-
+    if _p0animCounter = 30 then gosub __p0frame0
+    if _p0animCounter = 59 then gosub __p0frame1
     return
+
+__p0frame0
+    player0:
+    %00100010
+    %00101010
+    %00111111
+    %00111111
+    %11110001
+    %01110011
+    %01010000
+end
+    return
+
+__p0frame1
+    player0:
+    %00001000
+    %00101010
+    %00111111
+    %00111111
+    %11110001
+    %01110011
+    %01010000
+end
+    return
+
 
 __handleCollision
     if collision(player0, playfield) then player0x = _old0x : player0y = _old0y
