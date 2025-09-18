@@ -1,0 +1,27 @@
+=============
+    FLAGS
+=============
+
+Some booleans are stored in individual bits of one variable.
+These variables are called "_flags" or some derivation.
+
+_flags
+
+---- Movement ----
+
+Stores whether a player is moving or not for animation purposes.
+
+{0}
+    player0 movement flag. 0 if not moving, 1 if moving
+{1}
+    player1 movement flag. 0 if noot moving, 1 if moving
+
+---- Directional ----
+
+Stores what direction the player was facing last.
+
+{2}
+    player0 : 0 if facing right, 1 if facing left
+{3}
+    player1 : 0 if facing right, 1 if facing left
+    
