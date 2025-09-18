@@ -60,6 +60,8 @@ end
     b = 0
     c = 0
     d = 0
+    g = 0
+    h = 0
 
     dim _old0x = a
     dim _old0y = b
@@ -67,6 +69,7 @@ end
     dim _old1y = d
     dim _flags = e
 
+    rem -- Split into bits 76543210
     _flags = 0
     
     _flags{0} = 0   
@@ -80,13 +83,10 @@ end
     _flags{4} = 0
 
     dim _swapCooldown = f
-    _swapCooldown = 0
-
-    g = 0
     dim _p0animCounter = g
-    h = 0
     dim _p1animCounter = h
 
+    _swapCooldown = 0
 ; ======== PLAYER DATA INITIALIZERS ========
 
     player0x = 120
