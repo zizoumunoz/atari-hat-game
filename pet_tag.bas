@@ -52,6 +52,9 @@ end
     const GREEN = $BE
     const YELLOW = $1E
 
+    const CHASER = PURPLE
+    const PREY = GREEN
+
 ; ======== VARIABLE DECLARATIONS ========
     a = 0
     dim _old0x = a
@@ -73,6 +76,12 @@ end
     rem -- Flags for remembering what direction the player was facing last.
     _flags{2} = 0   
     _flags{3} = 0   
+
+    rem -- Flag to check who is doing chase
+    _flags{4} = 0
+
+    dim _swapCooldown = f
+    _swapCooldown = 0
 
     g = 0
     dim _p0animCounter = g
@@ -97,9 +106,8 @@ end
 ;                  MAIN LOOP
 ; ================================================
 __main
-
-    COLUP0 = PURPLE
-    COLUP1 = GREEN
+    if _flags{4} then COLUP1 = CHASER : COLUP0 = PREY
+    if !_flags{4} then COLUP1 = PREY : COLUP0 = CHASER
     COLUPF = YELLOW
     PF0 = %11110000
 
@@ -146,5 +154,10 @@ __updateAnimations
 __handleCollision
     if collision(player0, playfield) then player0x = _old0x : player0y = _old0y
     if collision(player1, playfield) then player1x = _old1x : player1y = _old1y
+    rem -- Swap characters and set reset swapping cooldown so it doesn't flash
+    if collision(player0, player1) && _swapCooldown = 0 then _flags{4} = !_flags{4} : _swapCooldown = 30
+
+    rem -- Lower countdown 1 per frame
+    if _swapCooldown > 0 then _swapCooldown = _swapCooldown - 1
     return
 
