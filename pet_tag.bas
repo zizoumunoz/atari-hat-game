@@ -57,18 +57,17 @@ end
 
 ; ======== VARIABLE DECLARATIONS ========
     a = 0
-    dim _old0x = a
     b = 0
-    dim _old0y = b
-
     c = 0
-    dim _old1x = c
     d = 0
+
+    dim _old0x = a
+    dim _old0y = b
+    dim _old1x = c
     dim _old1y = d
-
     dim _flags = e
-    _flags = 0
 
+    _flags = 0
     
     _flags{0} = 0   
     _flags{1} = 0 
