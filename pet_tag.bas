@@ -62,6 +62,8 @@ end
     d = 0
     g = 0
     h = 0
+    i = 0
+    j = 0
 
     dim _old0x = a
     dim _old0y = b
@@ -85,15 +87,22 @@ end
     dim _swapCooldown = f
     dim _p0animCounter = g
     dim _p1animCounter = h
+    dim _timer = i
+    dim _frameCounter = j
+    
 
     _swapCooldown = 0
-; ======== PLAYER DATA INITIALIZERS ========
+; ======== DATA INITIALIZERS ========
 
     player0x = 120
     player0y = 39
 
     player1x = 30
     player1y = 60
+
+    scorecolor = WHITE
+    _timer = 30
+    score = 1800
 
 
 ; ================================================
@@ -104,11 +113,17 @@ __main
     if !_flags{4} then COLUP1 = PREY : COLUP0 = CHASER
     COLUPF = YELLOW
     PF0 = %11110000
-
     gosub __updateAnimations
     gosub __handleInput
-    drawscreen
 
+    rem -- Handle frame counter
+    _frameCounter = _frameCounter + 1
+    rem -- Reset after 60 frames (1 second)
+    if _frameCounter = 61 then _frameCounter = 0
+
+    drawscreen
+    score = score - 1
+    gosub __handleTimer
     gosub __handleCollision
     goto __main
 
@@ -219,3 +234,57 @@ __handleCollision
     if _swapCooldown > 0 then _swapCooldown = _swapCooldown - 1
     return
 
+__handleTimer
+    if _frameCounter = 60 then _timer = _timer - 1
+    if _timer = 0 && _flags{4} then gosub __gameOverCat
+    if _timer = 0 && !_flags{4} then gosub __gameOverDog
+    return
+
+__gameOverCat
+
+    player0x = 100
+    player0x = 200
+    player1x = 200
+    player1y = 100
+
+    scorecolor = $00
+    
+   playfield:
+   ................................
+   ...XX...X..XXX.....X.X.....X....
+   ..X..X.X.X..X......XXX....X.....
+   ..X....XXX..X.........XXXX......
+   ..X..X.X.X..X.........X...X.....
+   ...XX..X.X..X...................
+   .................X...X..........
+   .................X...X.X......X.
+   .................X...X...XXX.X..
+   .................X.X.X.X.X.X..X.
+   ..................X.X..X.X.X.X..
+end
+    return
+
+__gameOverDog
+
+    player0x = 100
+    player0y = 200
+
+    player1x = 200
+    player1y = 100
+    
+    scorecolor = $00
+    
+   playfield:
+   ................................
+   ..XXX..............X.X....XX....
+   ..X..X.XXX.XXX....XXXX.....X....
+   ..X..X.X.X.X.X.......XXXXXXX....
+   ..X..X.X.X.X.X.......X.....X....
+   ..XXX..XXX.XXX..................
+   .............X...X...X..........
+   ...........XXX...X...X.X......X.
+   .................X...X...XXX.X..
+   .................X.X.X.X.X.X..X.
+   ..................X.X..X.X.X.X..
+end
+    return
