@@ -11,17 +11,17 @@
 
 ; ======== PLAYFIELD ====
     playfield:
-    ..XXXXXXXXXXXXXXXXXXXXXXXXXXXX..
-    ..X.............................
-    ..X............X.........XX..X..
-    ..X..X..XX........XX..X..XX..X..
-    ..X..X...X.....X.............X..
-    ..X..X..XX.....XXXXXXXXXXXXXXX..
-    ..X............X.........XX.....
-    .......XXXXXX.....XX..X..XX..X..
-    ..X....X.......X......X......X..
-    ..XXXXXX.XXXXXXXXXXXXXXXXXXXXX..
-    ................................
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    X..............................X
+    X..XXXXXXX...............XX....X
+    X.................XX..X..XX....X
+    X..X.....X.....................X
+    X..XXXXXXX.....................X
+    X........................XX....X
+    X......XXXXXX.....XX..X..XX..X.X
+    X.X....X..............X......X.X
+    X..............................X
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 end
 
 ; ======== PLAYER SPRITES ========
