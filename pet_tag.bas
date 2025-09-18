@@ -58,6 +58,11 @@ end
     b = 0
     dim _old0y = b
 
+    c = 0
+    dim _old1x = c
+    d = 0
+    dim _old1y = d
+
 ; ======== PLAYER DATA INITIALIZERS ========
 
     player0x = 120
@@ -85,12 +90,17 @@ __main
     gosub __handleInput
 
     drawscreen
+
+    gosub __handleCollision
     goto __main
 
 __handleInput
     rem -- Storing old positions for later
     _old0x = player0x
     _old0y = player0y
+
+    _old1x = player1x
+    _old1y = player1y
 
     rem -- player0 movement
     if joy0right then player0x = player0x + 1 : REFP0 = 8
@@ -103,4 +113,11 @@ __handleInput
     if joy1left then player1x = player1x - 1 : REFP1 = 8
     if joy1up then player1y = player1y - 1
     if joy1down then player1y = player1y + 1
+
     return
+
+__handleCollision
+    if collision(player0, playfield) then player0x = _old0x : player0y = _old0y
+    if collision(player1, playfield) then player1x = _old1x : player1y = _old1y
+    return
+
