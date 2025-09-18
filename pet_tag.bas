@@ -63,15 +63,16 @@ end
     d = 0
     dim _old1y = d
 
-    e = 0
     dim _flags = e
-    rem -- Flags for checking if the player is moving
-    _flags{0} = 0   rem -- player0 : 0 if not moving, 1 if moving
-    _flags{1} = 0   rem -- player1 : 0 if not moving, 1 if moving
+    _flags = 0
+
+    
+    _flags{0} = 0   
+    _flags{1} = 0 
 
     rem -- Flags for remembering what direction the player was facing last.
-    _flags{2} = 0   rem -- player0 : 0 if facing left, 1 if facing right
-    _flags{3} = 0   rem -- player1 : 0 if facing left, 1 if facing right
+    _flags{2} = 0   
+    _flags{3} = 0   
 
     g = 0
     dim _p0animCounter = g
@@ -119,20 +120,22 @@ __handleInput
 
     rem -- Flag to check if moving
     rem -- Also resets movement flag at beginning of frame
-    _flags{0} = 0   rem 
+    _flags{0} = 0
     _flags{1} = 0
 
     rem -- player0 movement
-    if joy0right then player0x = player0x + 1 : REFP0 = 8 : _flags{0} = 1
-    if joy0left then player0x = player0x - 1 : _flags{0} = 1
-    if joy0up then player0y = player0y - 1  : _flags{0} = 1
+    if joy0right then player0x = player0x + 1 : _flags{0} = 1 : _flags{2} = 0
+    if joy0left then player0x = player0x - 1 : _flags{0} = 1 : _flags{2} = 1
+    if joy0up then player0y = player0y - 1  : _flags{0} = 1 : _flags
     if joy0down then player0y = player0y + 1 : _flags{0} = 1
 
-    rem -- player1 movement
-    if joy1right then player1x = player1x + 1 : _flags{1} = 1
-    if joy1left then player1x = player1x - 1 : REFP1 = 8 :  _flags{1} = 1
+    if joy1right then player1x = player1x + 1 : _flags{1} = 1 : _flags{3} = 0
+    if joy1left then player1x = player1x - 1 : _flags{1} = 1 : _flags{3} = 1
     if joy1up then player1y = player1y - 1 :  _flags{1} = 1
     if joy1down then player1y = player1y + 1 : _flags{1} = 1
+
+    if !_flags{2} then REFP0 = 8
+    if _flags{3} then REFP1 = 8
 
     return
 
