@@ -64,6 +64,8 @@ end
     h = 0
     i = 0
     j = 0
+    k = 0
+    l = 0
 
     dim _old0x = a
     dim _old0y = b
@@ -89,6 +91,8 @@ end
     dim _p1animCounter = h
     dim _timer = i
     dim _frameCounter = j
+    dim _soundTimer = k
+    dim _soundID = l
     
 
     _swapCooldown = 0
@@ -102,6 +106,7 @@ end
 
     scorecolor = WHITE
     _timer = 30
+    _soundTimer = 10
     score = 1800
 
 
@@ -125,11 +130,16 @@ __main
     score = score - 1
     gosub __handleTimer
     gosub __handleCollision
+    gosub __handleSFX
+
+    if _timer = 0 then gosub __victoryTheme
+
     goto __main
 
 ; ================================================
 ;                  SUB-ROUTINES
 ; ================================================
+
 
 __handleInput
     rem -- Storing old positions for later
@@ -228,16 +238,47 @@ __handleCollision
     if collision(player0, playfield) then player0x = _old0x : player0y = _old0y
     if collision(player1, playfield) then player1x = _old1x : player1y = _old1y
     rem -- Swap characters and set reset swapping cooldown so it doesn't flash
-    if collision(player0, player1) && _swapCooldown = 0 then _flags{4} = !_flags{4} : _swapCooldown = 30
+    if collision(player0, player1) && _swapCooldown = 0 then _flags{4} = !_flags{4} : _swapCooldown = 30 : _soundID = 1
 
     rem -- Lower countdown 1 per frame
     if _swapCooldown > 0 then _swapCooldown = _swapCooldown - 1
     return
 
+
+__victoryTheme
+    rem Start the sequence if timer is 0
+    if _soundTimer = 0 then _soundTimer = 20   
+
+    rem Change note based on remaining time
+    if _soundTimer > 15 then AUDV0 = 10 : AUDC0 = 4 : AUDF0 = 18
+    if _soundTimer <= 15 && _soundTimer > 10 then AUDV0 = 10 : AUDC0 = 4 : AUDF0 = 16  
+    if _soundTimer <= 10 && _soundTimer > 5 then AUDV0 = 10 : AUDC0 = 4 : AUDF0 = 16  
+    if _soundTimer <= 5 && _soundTimer > 0 then AUDV0 = 10 : AUDC0 = 4 : AUDF0 = 14    
+
+    rem Count down the timer
+    if _soundTimer > 0 then _soundTimer = _soundTimer - 1
+
+    rem Silence when done
+    if _soundTimer = 0 then AUDV0 = 0
+return
+
+
+
 __handleTimer
     if _frameCounter = 60 then _timer = _timer - 1
     if _timer = 0 && _flags{4} then gosub __gameOverCat
     if _timer = 0 && !_flags{4} then gosub __gameOverDog
+
+    return
+
+__handleSFX
+    if _soundTimer > 0 then _soundTimer = _soundTimer - 1
+    if _soundTimer = 0 then AUDV0 = 0
+    
+    if _soundID = 1 then AUDV0 = 10 : AUDC0 = 4 : AUDF0 = 60
+
+    _soundID = 0
+
     return
 
 __gameOverCat
@@ -262,6 +303,7 @@ __gameOverCat
    .................X.X.X.X.X.X..X.
    ..................X.X..X.X.X.X..
 end
+
     return
 
 __gameOverDog
@@ -287,4 +329,5 @@ __gameOverDog
    .................X.X.X.X.X.X..X.
    ..................X.X..X.X.X.X..
 end
+
     return

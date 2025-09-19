@@ -1,4 +1,11 @@
 =============
+   SOUNDS
+=============
+
+Each soundID represents a unique sound.
+
+
+=============
     FLAGS
 =============
 
@@ -34,17 +41,3 @@ Checks state of game, like who is chasing, who won, etc.
     1: player1 is chasing, player0 is prey
 
 
-
-   playfield:
-   ................................
-   ..XXX..............X.X....XX....
-   ..X..X.XXX.XXX....XXXX.....X....
-   ..X..X.X.X.X.X.......XXXXXXX....
-   ..X..X.X.X.X.X.......X.....X....
-   ..XXX..XXX.XXX..................
-   .............X...X...X..........
-   ...........XXX...X...X.X......X.
-   .................X...X...XXX.X..
-   .................X.X.X.X.X.X..X.
-   ..................X.X..X.X.X.X..
-end
